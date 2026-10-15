@@ -10,7 +10,7 @@ lichen$Severity <- trimws(lichen$Severity) #one site had space after HS label
 #______________________________________________________________________________#
 
 #grouping lichen percent cover data by site and severity classes - using a grouped mean across entire site
-#maybe not helpful
+#maybe not helpful - ignore
 lichen.grouped<- lichen %>%
   group_by(Site, Severity) %>%
   summarise(Mean_Cov = mean(Lichen_Cov))
