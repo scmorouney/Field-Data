@@ -1,5 +1,6 @@
 library(dplyr)
 library(ggplot2)
+library(ggtext)
 
 #load in lichen dataset
 
@@ -30,7 +31,7 @@ LichenCov_2023<-lichen %>%
 
 #trying plotting from raw dataset so as to not erase alllll variation lol
 
-LichenCov_all<- ggplot(lichen, aes(x=Severity, y=Lichen_Cov, fill=Severity))+geom_boxplot() + scale_fill_manual(values=c("red", "orange", "darkgreen"))
+LichenCov_all<- ggplot(lichen, aes(x=Severity, y=Lichen_Cov, fill=Severity))+geom_boxplot() + scale_fill_manual(values=c("red", "orange", "darkgreen")) +   guides(fill = "none") + labs(x = "Severity", y = "Lichen % Cover")
 LichenCov_all 
 
 LichenCov_Plot_80s<- ggplot(LichenCov_80s, aes(x=Severity, y=Lichen_Cov))+geom_boxplot()
@@ -77,7 +78,7 @@ LichenVol_2023<-lichen_vol %>%
   filter(Site %in% c("NL23", "VC23", "HL23"))
 
 
-LichenVol_all<- ggplot(lichen_vol, aes(x=Severity, y=Lichen_Vol, fill=Severity))+geom_boxplot() + scale_fill_manual(values=c("red", "orange", "darkgreen"))
+LichenVol_all<- ggplot(lichen_vol, aes(x=Severity, y=Lichen_Vol, fill=Severity))+geom_boxplot() + scale_fill_manual(values=c("red", "orange", "darkgreen")) + guides(fill = "none") + xlab('Severity') + ylab(bquote('Lichen  Volume  '(cm^3)))
 LichenVol_all 
 
 LichenVol_Plot_80s<- ggplot(LichenVol_80s, aes(x=Severity, y=Lichen_Vol))+geom_boxplot()
