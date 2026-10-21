@@ -66,8 +66,14 @@ lichen.grouped<- lichen %>%
 lichen_vol<- read.csv("Lichen_vol.csv")
 lichen_vol$Severity <- trimws(lichen$Severity) #one site had space after HS label
 
-
-
+lichen_vol<- lichen_vol %>%
+ mutate(Severity= case_when(
+  Severity == "HS" ~ "High Severity",
+  Severity == "MS" ~ "Medium Severity",
+  Severity == "UB" ~ "Unburned"
+))
+  
+  
 LichenVol_80s<- lichen_vol %>%
   filter(Site %in% c("87", "SL85"))
 
@@ -81,11 +87,11 @@ LichenVol_2023<-lichen_vol %>%
 LichenVol_all<- ggplot(lichen_vol, aes(x=Severity, y=Lichen_Vol, fill=Severity))+geom_boxplot() + scale_fill_manual(values=c("red", "orange", "darkgreen")) + guides(fill = "none") + xlab('Severity') + ylab(bquote('Lichen  Volume  '(cm^3)))
 LichenVol_all 
 
-LichenVol_Plot_80s<- ggplot(LichenVol_80s, aes(x=Severity, y=Lichen_Vol))+geom_boxplot()
+LichenVol_Plot_80s<- ggplot(LichenVol_80s, aes(x=Severity, y=Lichen_Vol,  fill=Severity))+geom_boxplot() + scale_fill_manual(values=c("red", "orange", "darkgreen")) + guides(fill = "none") + xlab('Severity') + ylab(bquote('Lichen  Volume  '(cm^3)))
 LichenVol_Plot_80s
 
-LichenVol_Plot_2012<- ggplot(LichenVol_2012, aes(x=Severity, y=Lichen_Vol))+geom_boxplot()
+LichenVol_Plot_2012<- ggplot(LichenVol_2012, aes(x=Severity, y=Lichen_Vol, fill=Severity))+geom_boxplot() + scale_fill_manual(values=c("red", "orange", "darkgreen")) + guides(fill = "none") + xlab('Severity') + ylab(bquote('Lichen  Volume  '(cm^3)))
 LichenVol_Plot_2012
 
-LichenVol_Plot_2023<- ggplot(LichenVol_2023, aes(x=Severity, y=Lichen_Vol))+geom_boxplot()
+LichenVol_Plot_2023<- ggplot(LichenVol_2023, aes(x=Severity, y=Lichen_Vol, fill=Severity))+geom_boxplot() + scale_fill_manual(values=c("red", "orange", "darkgreen")) + guides(fill = "none") + xlab('Severity') + ylab(bquote('Lichen  Volume  '(cm^3)))
 LichenVol_Plot_2023
