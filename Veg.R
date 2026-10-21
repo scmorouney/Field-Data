@@ -7,10 +7,22 @@ library(forcats)
 #load in shrub dataset
 
 shrubs<- read.csv("ShrubTraits.csv")
+
+shrubs<- shrubs %>%
+  mutate(Severity= case_when(
+    Severity == "HS" ~ "High Severity",
+    Severity == "MS" ~ "Medium Severity",
+    Severity == "UB" ~ "Unburned"
+  ))
+
+#shrubs.grouped<- shrubs %>%
+  #mutate(type=fct_collapse(Severity, 
+       #                    Burned = c("MS", "HS"),
+       #                    Unburned = "UB"))
+
+#create deciduous shrub column
 shrubs.grouped<- shrubs %>%
-  mutate(type=fct_collapse(Severity, 
-                           Burned = c("MS", "HS"),
-                           Unburned = "UB"))
+  mutate(Decid_Shrub_Cov = Bet_Cov + Aln_Cov + Sal_Cov )
 
 #subsetting shrub data by fire year 
 
@@ -35,6 +47,18 @@ Shrubs_2023grouped<-shrubs.grouped %>%
   filter(Site %in% c("NL23", "VC23", "HL23"))
 
 
+#all deciduous shrub cover
+ShrubsBet_Plot<- ggplot(shrubs.grouped, aes(x=Severity, y=Decid_Shrub_Cov, fill = Severity))+geom_boxplot()  + scale_fill_manual(values=c("red", "orange", "darkgreen")) + guides(fill = "none") + xlab('Severity') + ylab('Deciduous Shrub % Cover')
+ShrubsBet_Plot
+
+ShrubsBet_Plot_80s<- ggplot(Shrubs_80sgrouped, aes(x=Severity, y=Decid_Shrub_Cov, fill = Severity))+geom_boxplot()+ scale_fill_manual(values=c("red", "orange", "darkgreen")) + guides(fill = "none") + xlab('Severity') + ylab('Deciduous Shrub % Cover')
+ShrubsBet_Plot_80s
+
+ShrubsBet_Plot_2012<- ggplot(Shrubs_2012grouped, aes(x=Severity, y=Decid_Shrub_Cov, fill = Severity))+geom_boxplot()+ scale_fill_manual(values=c("red", "orange", "darkgreen")) + guides(fill = "none") + xlab('Severity') + ylab('Deciduous Shrub % Cover')
+ShrubsBet_Plot_2012
+
+ShrubsBet_Plot_2023<- ggplot(Shrubs_2023grouped, aes(x=Severity, y=Decid_Shrub_Cov, fill = Severity))+geom_boxplot()+ scale_fill_manual(values=c("red", "orange", "darkgreen")) + guides(fill = "none") + xlab('Severity') + ylab('Deciduous Shrub % Cover')
+ShrubsBet_Plot_2023
 
 #looking at betula cover
 ShrubsBet_Plot<- ggplot(shrubs, aes(x=Severity, y=Bet_Cov))+geom_boxplot()
