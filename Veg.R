@@ -51,7 +51,7 @@ Shrubs_2023grouped<-shrubs.grouped %>%
 ShrubsBet_Plot<- ggplot(shrubs.grouped, aes(x=Severity, y=Decid_Shrub_Cov, fill = Severity))+geom_boxplot()  + scale_fill_manual(values=c("red", "orange", "darkgreen")) + guides(fill = "none") + xlab('Severity') + ylab('Deciduous Shrub % Cover')
 ShrubsBet_Plot
 
-ShrubsBet_Plot_80s<- ggplot(Shrubs_80sgrouped, aes(x=Severity, y=Decid_Shrub_Cov, fill = Severity))+geom_boxplot()+ scale_fill_manual(values=c("red", "orange", "darkgreen")) + guides(fill = "none") + xlab('Severity') + ylab('Deciduous Shrub % Cover')
+ShrubsBet_Plot_80s<- ggplot(Shrubs_80sgrouped, aes(x=Severity, y=Decid_Shrub_Cov, fill = Severity))+geom_boxplot(outlier.shape = NA)+ theme(axis.title = element_text(size = 16), axis.text = element_text(size = 14), axis.title.x = element_blank())+ scale_fill_manual(values=c("red", "orange", "darkgreen")) + guides(fill = "none") + xlab('Severity') + ylab('Deciduous Shrub % Cover')
 ShrubsBet_Plot_80s
 
 ShrubsBet_Plot_2012<- ggplot(Shrubs_2012grouped, aes(x=Severity, y=Decid_Shrub_Cov, fill = Severity))+geom_boxplot()+ scale_fill_manual(values=c("red", "orange", "darkgreen")) + guides(fill = "none") + xlab('Severity') + ylab('Deciduous Shrub % Cover')

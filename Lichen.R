@@ -64,7 +64,8 @@ lichen.grouped<- lichen %>%
 
 
 lichen_vol<- read.csv("Lichen_vol.csv")
-lichen_vol$Severity <- trimws(lichen$Severity) #one site had space after HS label
+lichen_vol<-read.csv("Plants(Lichen) (1).csv")
+lichen_vol$Severity <- trimws(lichen_vol$Severity) #one site had space after HS label
 
 lichen_vol<- lichen_vol %>%
  mutate(Severity= case_when(
@@ -84,11 +85,22 @@ LichenVol_2023<-lichen_vol %>%
   filter(Site %in% c("NL23", "VC23", "HL23"))
 
 
-LichenVol_all<- ggplot(lichen_vol, aes(x=Severity, y=Lichen_Vol, fill=Severity))+geom_boxplot() + scale_fill_manual(values=c("red", "orange", "darkgreen")) + guides(fill = "none") + xlab('Severity') + ylab(bquote('Lichen  Volume  '(cm^3)))
+LichenVol_all<- ggplot(lichen_vol, aes(x=Severity, y=Lichen_Vol, fill=Severity))+
+  geom_boxplot(outlier.shape=NA) + 
+  theme(axis.title = element_text(size = 16), axis.text = element_text(size = 14), axis.title.x = element_blank())+
+  scale_fill_manual(values=c("red", "orange", "darkgreen")) + guides(fill = "none") + 
+ ylab(bquote('Lichen  Volume  '(cm^3))) +
+ coord_cartesian(ylim = c(0, 600))
 LichenVol_all 
 
-LichenVol_Plot_80s<- ggplot(LichenVol_80s, aes(x=Severity, y=Lichen_Vol,  fill=Severity))+geom_boxplot() + scale_fill_manual(values=c("red", "orange", "darkgreen")) + guides(fill = "none") + xlab('Severity') + ylab(bquote('Lichen  Volume  '(cm^3)))
-LichenVol_Plot_80s
+LichenVol_Plot_80s<- ggplot(LichenVol_80s, aes(x=Severity, y=Lichen_Vol,  fill=Severity))+
+  geom_boxplot(outlier.shape=NA) + 
+  theme(axis.title = element_text(size = 16), axis.text = element_text(size = 14), axis.title.x = element_blank())+
+  scale_fill_manual(values=c("red", "orange", "darkgreen")) + guides(fill = "none") + 
+  ylab(bquote('Lichen  Volume  '(cm^3))) +
+  coord_cartesian(ylim = c(0, 800))
+  
+  LichenVol_Plot_80s
 
 LichenVol_Plot_2012<- ggplot(LichenVol_2012, aes(x=Severity, y=Lichen_Vol, fill=Severity))+geom_boxplot() + scale_fill_manual(values=c("red", "orange", "darkgreen")) + guides(fill = "none") + xlab('Severity') + ylab(bquote('Lichen  Volume  '(cm^3)))
 LichenVol_Plot_2012
