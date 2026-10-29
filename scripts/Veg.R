@@ -4,7 +4,7 @@ library(dplyr)
 library(ggplot2)
 library(forcats)
 
-#load in shrub dataset
+#load in shrub dataset.  
 
 shrubs<- read.csv("ShrubTraits.csv")
 
