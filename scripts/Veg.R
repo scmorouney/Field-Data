@@ -5,7 +5,6 @@ library(ggplot2)
 library(forcats)
 
 #load in shrub dataset
-#making edits to make sure structure is intact
 
 shrubs<- read.csv("ShrubTraits.csv")
 
