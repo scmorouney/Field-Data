@@ -7,6 +7,9 @@ includes data, scripts, and plots from field data
         
 ____________________________________________________
 
+always PULL before starting work on new device!!!!!!
+________________________________________________________
+
 process for setting up git and github link to R:
 
 1. download git on device
