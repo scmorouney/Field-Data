@@ -2,7 +2,7 @@ library(dplyr)
 library(ggplot2)
 library(ggtext)
 
-#load in lichen dataset ---- 
+#load in lichen dataset
 
 lichen<- read.csv("Lichen.csv")
 lichen$Severity <- trimws(lichen$Severity) #one site had space after HS label
