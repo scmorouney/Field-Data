@@ -1,8 +1,10 @@
 created to backup code used for field data analysis and work across devices
+
 includes data, scripts, and plots from field data 
-  data -- copies of raw data files saved here as CSVs 
-  scripts -- scripts for different analyses saved here individually
-  plots -- output figures saved here (ensure labelled with versions) 
+        data -- copies of raw data files saved here as CSVs 
+        scripts -- scripts for different analyses saved here individually
+        plots -- output figures saved here (ensure labelled with versions) 
+        
 ____________________________________________________
 
 process for setting up git and github link to R:
